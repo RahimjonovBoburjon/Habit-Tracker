@@ -1,0 +1,45 @@
+<template>
+    <div
+        class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ habit.name }}</h3>
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+            <div :style="{ width: habit.progress + '%' }" class="bg-green-500 h-2 rounded-full"></div>
+        </div>
+        <div class="flex justify-between">
+            <button @click="increaseProgress"
+                class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
+                Mark as Done
+            </button>
+            <button @click="decreaseProgress"
+                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
+                Undo
+            </button>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        habit: Object,
+    },
+    methods: {
+        increaseProgress() {
+            if (this.habit.progress < 100) {
+                this.habit.progress += 10
+                this.$emit('updateHabit', this.habit)
+            }
+        },
+        decreaseProgress() {
+            if (this.habit.progress > 0) {
+                this.habit.progress -= 10
+                this.$emit('updateHabit', this.habit)
+            }
+        },
+    },
+}
+</script>
+
+<style scoped>
+/* Add custom styles if necessary */
+</style>
