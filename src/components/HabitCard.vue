@@ -1,6 +1,10 @@
 <template>
     <div
-        class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
+        class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 relative">
+        <button @click="deleteHabit"
+            class="absolute top-2 right-2 bg-red-500 text-white p-1 px-3 rounded-full hover:bg-red-600 transition duration-200">
+            <span class="text-xl">&times;</span>
+        </button>
         <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ habit.name }}</h3>
         <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
             <div :style="{ width: habit.progress + '%' }" class="bg-green-500 h-2 rounded-full"></div>
@@ -36,10 +40,9 @@ export default {
                 this.$emit('updateHabit', this.habit)
             }
         },
+        deleteHabit() {
+            this.$emit('deleteHabit', this.habit.id)
+        }
     },
 }
 </script>
-
-<style scoped>
-/* Add custom styles if necessary */
-</style>
