@@ -7,6 +7,13 @@
         @deleteHabit="deleteHabit" />
     </div>
   </div>
+
+  <footer
+    class="bg-gradient-to-r from-teal-400 to-blue-500 text-white text-lg py-4 fixed bottom-0 left-0 right-0 shadow-lg rounded-t-lg">
+    <p class="font-semibold text-center">
+      Powered by <span class="text-yellow-300"><a href="https://github.com/RahimjonovBoburjon">Bobur</a></span>
+    </p>
+  </footer>
 </template>
 
 <script>
@@ -45,3 +52,28 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  font-size: 1.125rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer span {
+  font-weight: bold;
+  color: #e2fb24;
+}
+</style>
