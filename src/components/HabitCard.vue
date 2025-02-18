@@ -27,15 +27,27 @@
                 Undo
             </button>
         </div>
+
+        <vue-confetti v-if="showConfetti" />
     </div>
 </template>
 
 <script>
+import VueConfetti from 'vue-confetti'
+
 export default {
+    components: {
+        VueConfetti
+    },
     props: {
         habit: {
             type: Object,
             required: true
+        }
+    },
+    data() {
+        return {
+            showConfetti: false
         }
     },
     methods: {
@@ -43,6 +55,9 @@ export default {
             if (this.habit.progress < 100) {
                 this.habit.progress += 10
                 this.$emit('updateHabit', this.habit)
+                if (this.habit.progress === 100) {
+                    this.triggerConfetti()
+                }
             }
         },
         decreaseProgress() {
@@ -53,6 +68,12 @@ export default {
         },
         deleteHabit() {
             this.$emit('deleteHabit', this.habit.id)
+        },
+        triggerConfetti() {
+            this.showConfetti = true
+            setTimeout(() => {
+                this.showConfetti = false
+            }, 5000)
         }
     }
 }
