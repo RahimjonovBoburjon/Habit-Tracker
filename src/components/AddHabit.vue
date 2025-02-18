@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-white p-6 rounded-xl shadow-xl max-w-sm mx-auto transform hover:scale-105 transition-all duration-200">
+        class="bg-white p-6 rounded-xl shadow-xl max-w-sm mx-auto transform hover:scale-105 transition-all duration-200 mx-4">
         <input v-model="habitName" type="text" placeholder="Enter habit name"
             class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
         <button @click="addHabit"

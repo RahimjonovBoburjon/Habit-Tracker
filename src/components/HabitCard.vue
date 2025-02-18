@@ -5,11 +5,19 @@
             class="absolute top-2 right-2 bg-red-500 text-white p-1 px-3 rounded-full hover:bg-red-600 transition duration-200">
             <span class="text-xl">&times;</span>
         </button>
-        <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ habit.name }}</h3>
-        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
-            <div :style="{ width: habit.progress + '%' }" class="bg-green-500 h-2 rounded-full"></div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-3 break-words">
+            {{ habit.name }}
+        </h3>
+
+        <div class="relative w-full bg-gray-200 rounded-full h-4 mb-4">
+            <div :style="{ width: habit.progress + '%' }" class="bg-green-500 h-4 rounded-full"></div>
+            <span class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-800">
+                {{ habit.progress }}%
+            </span>
         </div>
-        <div class="flex justify-between">
+
+        <div class="flex justify-between items-end mt-auto">
             <button @click="increaseProgress"
                 class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
                 Mark as Done
@@ -25,7 +33,10 @@
 <script>
 export default {
     props: {
-        habit: Object,
+        habit: {
+            type: Object,
+            required: true
+        }
     },
     methods: {
         increaseProgress() {
@@ -43,6 +54,8 @@ export default {
         deleteHabit() {
             this.$emit('deleteHabit', this.habit.id)
         }
-    },
+    }
 }
 </script>
+
+<style scoped></style>
